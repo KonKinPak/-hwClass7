@@ -1,0 +1,19 @@
+%p#notice= notice
+
+%h1.text-light Register User
+
+= simple_form_for(@user) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :email ,class:"form-label",placeholder: 'Email'
+    = f.input :name ,placeholder: 'Name'
+    = f.input :password_digest, label: "Password",hint:'8-15 characters'
+    = f.input :password_digest_confirmation, label: 'Password Confirmation'
+  %br
+  .d-flex.flex-row
+    .form-actions.w-10.me-5
+      = f.button :submit ,label: "OK" ,class: "btn btn-primary"
+    %a.btn.btn-secondary{:href => "/main"}  Cancel
+

@@ -1,0 +1,35 @@
+-#%p#notice= notice
+
+-# frozen_string_literal: true
+-#= simple_format(@user) do |f|
+-#= f.error_notification
+-#  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+-#  .form-inputs
+-#    = f.input :email
+-#    = f.input :password_digest
+
+-#  .form-actions
+/   = f.button :submit , "log in"
+/   = f.button :register ,"register"
+
+- flash.each do |type, msg|
+  .alert.alert-danger{:role => "alert"}
+    = msg
+-#%p#notice= notice
+-#%p.alert= alert
+
+-#= simple_form_for(@user) do |form|
+-#.d-flex.align-items-center.justify-content-center
+.main
+  = form_with do |form|
+    .field
+      -#=form.label :email 
+      =form.text_field :email ,class:"form-control-lg w-100 m-3 shadow",placeholder: "Email"
+      -#=form.label :password ,"password"
+      =form.password_field :password ,class:"form-control-lg w-100 m-3 shadow",placeholder: "Password"
+      .row
+        .col
+          = button_to "Log in" , "/main" ,class:"btn btn-primary ms-3 main-btn"
+        .col
+          = button_to "Register" , "/register",class:"btn btn-secondary ms-3 main-btn",method: "get"

@@ -1,0 +1,26 @@
+= render 'nav'
+%p{:style => "color:white;"}
+  %strong Name:
+  = @profile_user.name
+%p{:style => "color:white;"} 
+  %strong Email:
+  = @profile_user.email
+%br
+- if @user.followees.include?(@profile_user)
+  = button_to "Unfollow", unfollow_user_path , method: "POST",class:"btn btn-secondary main-btn"
+- else
+  = button_to "Follow", follow_user_path , method: "POST" ,class:"btn btn-primary  main-btn"
+
+
+%br
+- @profile_user.posts.each do |post| 
+  .card{:style => "width: 50vw;"}
+    .card-body.cardPost
+      %h5.card-title= @profile_user.name
+      %h6.card-subtitle.mb-2.text-muted= post.created_at.to_formatted_s(:short)
+      %pCard.card-text.fst-italic= post.msg
+  %br
+
+= button_to "Back", "/feed" , method: "get" ,class:"btn btn-secondary main-btn"
+
+

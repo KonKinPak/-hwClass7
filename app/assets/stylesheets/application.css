@@ -1,0 +1,85 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+body {
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    }
+p{
+    font-size: 30px;
+}
+w-10{
+    width: 10%;
+}
+
+.pCard{
+    font-size: 18px;
+}
+.field{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.btn-primary {
+    color: #FFFFFF !important;
+    background-color:   #5DADE2 !important;
+    border-color: #FFFFFF !important;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19) !important;
+}
+.btn-primary:hover{
+    color: #5DADE2 !important;
+    background-color:  #EBF5FB!important;
+}
+
+.btn-secondary {
+    color: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
+.main-btn{
+    width: 20vh;
+    height: 6vh;
+}
+
+.cardPost{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.navbar-brand:hover{
+    background-color:  #EBF5FB!important;
+}
+.btn-info{
+    background-color:  #AED6F1 !important;
+    border-color: #FFFFFF !important;
+}
+.btn-info:hover{
+    background-color:  #85C1E9 !important;
+    border-color: #FFFFFF !important;
+}

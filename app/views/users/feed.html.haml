@@ -1,0 +1,34 @@
+- flash.each do |type, msg|
+  .alert.alert-info
+    = msg
+= render 'nav'
+- @posts.each do |post| 
+  - profile_user_name = User.find(post.user_id).name
+  .card{:style => "width: 50vw;"}
+    .card-body.cardPost
+      %h5.card-title= profile_user_name
+      %h6.card-subtitle.mb-2.text-muted= post.created_at.to_formatted_s(:short)
+      %pCard.card-text.fst-italic= post.msg
+      %br
+      %a.card-link{:href => "/profile/#{profile_user_name}",:method =>"get"} Profile
+  %br
+/
+/%table
+/  %thead
+/    %tr
+/      %th Post_by
+/      %th Message
+/      %th Create_at
+/      %th{:colspan => "3"}
+/  %tbody 
+/    - @posts.each do |post|
+/      %tr
+/        %td= post.user_id
+/        %td= post.msg
+/        %td= post.created_at.to_formatted_s(:short)
+/        -#%td= link_to 'Edit', edit_post_path(post.id)
+/        -#%td= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?'}
+/= button_to main_path do 
+/  = 'Log out'
+/  - flash.alert= "Bye Bye"
+/  - method: => "get"
