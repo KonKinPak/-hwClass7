@@ -31,15 +31,20 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+#  def feed #should not be in model
+#    @user = User.find(session[:user_id])
+#    @posts = []
+#    @user.followees.each do |f|
+#      f.posts.each do |p|
+#        @posts.push(p)
+#      end
+#    end
+#    @posts = @posts.sort().reverse
+#  end
+
   def feed
     @user = User.find(session[:user_id])
-    @posts = []
-    @user.followees.each do |f|
-      f.posts.each do |p|
-        @posts.push(p)
-      end
-    end
-    @posts = @posts.sort().reverse
+    @posts = @user.get_feed_post 
   end
 
   def profile
@@ -53,13 +58,13 @@ class UsersController < ApplicationController
   def follow
     profile_user = User.find_by(name:params[:name])
     Follow.create(follower_id:session[:user_id],followee_id:profile_user.id)
-    redirect_to feed_path ,notice: "You just follow " + profile_user.name
+    redirect_to profile_path(params[:name]) ,notice: "You just follow " + profile_user.name
   end
 
   def unfollow
     profile_user = User.find_by(name:params[:name])
     Follow.find_by(follower_id:session[:user_id],followee_id:profile_user.id).destroy
-    redirect_to feed_path ,notice: "You just unfollow " + profile_user.name
+    redirect_to profile_path(params[:name])  ,notice: "You just unfollow " + profile_user.name
   end
 
   # GET /users or /users.json
@@ -82,7 +87,7 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.new(email:"MyString",name:"MyString",password_digest:"MyString")
 
     respond_to do |format|
       if @user.save

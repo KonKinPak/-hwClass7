@@ -9,3 +9,19 @@ two:
   email: MyString
   name: MyString
   password_digest: MyString
+
+test_user:
+  email: asdjgl
+  password_digest: 111
+
+user1:
+  id: 1
+  email: one
+  name: one
+  password_digest: 111
+
+user2:
+  id: 2
+  email: two
+  name : two
+  password_digest: 222

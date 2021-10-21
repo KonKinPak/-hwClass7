@@ -7,3 +7,11 @@ one:
 two:
   follower_id: MyString
   followee_id: MyString
+
+test: # 1 follow 2
+  follower_id: 1
+  followee_id: 2
+
+test2: # 2 follow 1
+  follower_id: 2
+  followee_id: 1

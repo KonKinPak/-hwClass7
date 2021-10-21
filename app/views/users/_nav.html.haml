@@ -1,9 +1,11 @@
 %nav.navbar.navbar-expand-lg.navbar-light.bg-light
   :javascript
     function searchUser() {
-      profileUser = document.getElementById("searchText");
-      console.log(profileUser.value)
-      window.location.href = "/profile/"+profileUser;
+      var profileUser = document.getElementById("searchText");
+      console.log("Hello");
+      console.log(profileUser.value);
+      window.location.href = "/profile/"+profileUser.value;
+      /window.location.history.push("/profile/f");
       }
   .container-fluid
     %a.navbar-brand{:href => "/feed"}
@@ -13,7 +15,7 @@
       %span.navbar-toggler-icon
     #navbarNav.collapse.navbar-collapse
       %ul.navbar-nav.me-auto.mb-2.mb-lg-0
-        %form.d-flex.me-2
+        %form.d-flex.me-2 
           %input.form-control.w-75.me-2#searchText{"aria-label" => "Search", :placeholder => "Search for user", :type => "search"}/
           %button.btn.btn-outline-success{:onclick => "searchUser()",:type => "submit"} Search
       .d-flex.justify-content-end

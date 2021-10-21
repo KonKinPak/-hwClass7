@@ -2,6 +2,17 @@ class PostsController < ApplicationController
   include MainConcern
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :is_logged_in, only: %i[new_post]
+
+  def unlike
+    Like.find_by(post_id:params[:post_id] ,user_id:session[:user_id]).destroy
+    redirect_to request.referrer
+  end
+
+  def like
+    Like.create(post_id:params[:post_id] ,user_id:session[:user_id])
+    redirect_to request.referrer
+  end
+
   def new_post
     @post = Post.new
   end
