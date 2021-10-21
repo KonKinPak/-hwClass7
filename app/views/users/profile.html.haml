@@ -37,7 +37,7 @@
                 %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type  => "button"}
               .modal-body
                 - post.user_likes.each do |user|
-                  %a.card-link-feed{:href => "profile/#{user.name}",:method => "get",:style => "font-size:25px"}
+                  %a.card-link-feed{:href => "/profile/#{user.name}",:method => "get",:style => "font-size:25px"}
                     = user.name
                   %br
                   %br
