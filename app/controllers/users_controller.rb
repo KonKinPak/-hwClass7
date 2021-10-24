@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @pass = params[:password]
     @user = User.find_by(email:@email)
     respond_to do |format|
-      unless(@user.present? && @user.password_digest == @pass)
+      unless(@user.present? && @user.authenticate(@pass))
         format.html { redirect_to main_path , alert: "Email/password not valid" }
       else
         session[:user_id] = @user.id
@@ -87,7 +87,7 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.new(email:"MyString",name:"MyString",password_digest:"MyString")
+    @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
@@ -131,6 +131,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :name, :password_digest, :password_digest_confirmation)
+      params.require(:user).permit(:email, :name, :password, :password_confirmation)
     end
 end

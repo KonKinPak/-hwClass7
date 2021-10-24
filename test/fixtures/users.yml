@@ -18,10 +18,10 @@ user1:
   id: 1
   email: one
   name: one
-  password_digest: 111
+  password_digest: <%= BCrypt::Password.create('one') %>
 
 user2:
   id: 2
   email: two
   name : two
-  password_digest: 222
+  password_digest: <%= BCrypt::Password.create('two') %>

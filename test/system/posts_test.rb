@@ -47,8 +47,8 @@ class PostsTest < ApplicationSystemTestCase
   	#user_name = f
 	  	#session[:user_id] = '1'
     	visit main_path
-    	fill_in "Email", with: @user.email
-    	fill_in "Password", with: @user.password_digest
+    	fill_in "Email", with: "one"
+    	fill_in "Password", with: "one"
     	#fill_in "Email", with: 'f'
     	#fill_in "Password", with: 'ffffffff'
     	click_on "Log in"

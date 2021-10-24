@@ -2,7 +2,8 @@ require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
   setup do
-    @test_user = users(:test_user)
+    @user1 = users(:user1) #success
+    @user2 = users(:user2) #fail
   end
 
 #  test "visiting the index" do
@@ -52,15 +53,15 @@ class UsersTest < ApplicationSystemTestCase
     visit main_path
     #fill_in "Email", with: @wrong_user.email
     #fill_in "Password", with: @wrong_user.password_digest
-    fill_in "Email", with: 'asdlgj'
-    fill_in "Password", with: 'agdlsjglS'
+    fill_in "Email", with: 'two'
+    fill_in "Password", with: 'aosdjgo'
     click_on "Log in"
     assert_text "Email/password not valid"
   end
   test "login_success" do
     visit main_path
-    fill_in "Email", with: @test_user.email
-    fill_in "Password", with: @test_user.password_digest
+    fill_in "Email", with: 'one'
+    fill_in "Password", with: 'one'
     #fill_in "Email", with: 'f'
     #fill_in "Password", with: 'ffffffff'
     click_on "Log in"

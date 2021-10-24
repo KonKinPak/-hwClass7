@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_200819) do
+ActiveRecord::Schema.define(version: 2021_10_24_151616) do
 
   create_table "follows", force: :cascade do |t|
     t.string "follower_id"
@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 2021_10_15_200819) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "name"
-    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
   add_foreign_key "likes", "posts"

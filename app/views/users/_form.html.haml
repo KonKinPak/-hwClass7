@@ -6,8 +6,8 @@
   .form-inputs
     = f.input :email ,placeholder: 'email'
     = f.input :name 
-    = f.input :password_digest, label: 'Password',hint:'8-15 characters'
-    = f.input :password_digest_confirmation, label: 'Password Confirmation'
+    = f.input :password, label: 'Password',hint:'8-15 characters'
+    = f.input :password_confirmation, label: 'Password Confirmation'
 
   .form-actions
     = f.button :submit
