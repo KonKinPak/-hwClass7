@@ -15,24 +15,39 @@
         = button_to "Unlike", unlike_post_path(post.id) , method: "POST",class:"btn btn-primary unlike-btn mt-2"
       - else
         = button_to "Like", like_post_path(post.id) , method: "POST" ,class:"btn btn-secondary  like-btn mt-2"
-      - if post.likes.count != 0
-        %button.btn.btn-primary.btn-showUser.mt-2{"data-bs-target" => "#userLike", "data-bs-toggle" => "modal", :type => "button"}
+      - if post.likes.count != 0 
+        %button.btn.btn-primary.btn-showUser.mt-2.showUsers{"data-bs-target" => "#Like", "data-bs-toggle" => "modal", :type => "button","dataModal": post.user_likes.to_json}
           -#----------------number of like------------------
           = post.likes.count.to_s + " Likes"
-        #userLike.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel",   :tabindex => "-1"}
-          .modal-dialog.modal-dialog-scrollable
-            .modal-content
-              .modal-header
-                %h5#exampleModalLabel.w-100.modal-title.text-center ❤
-                %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type  => "button"}
-              .modal-body
-                - post.user_likes.each do |user|
-                  %a.card-link-feed{:href => "profile/#{user.name}",:method => "get",:style => "font-size:25px"}
-                    = user.name
-                  %br
-                  %br
-          
-    %br
+
+.modal.fade{id: "Like",role: "modal","aria-hidden" => "true","taria-labelledby" => "exampleModalLabel",   :tabindex => "-1"}
+  .modal-dialog.modal-dialog-scrollable
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.w-100.modal-title.text-center ❤
+        %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type  => "button"}
+      .modal-body
+        .div#mo_body{:style => "font-size:25px"}
+          -# - post.user_likes.each do |user|
+          -#%a.card-link-feed{:href => "profile/#{user.name}",:method => "get",:style=> " font-size:25px"}
+          -#/    = user.name
+          -#/    %br
+          -#/    %br
+    
+%br
+
+:javascript
+  $(".showUsers").click(function(){
+    $("#mo_body").empty();
+    var userJson = $(this).attr("dataModal");
+    var userObject = jQuery.parseJSON(userJson);
+    userObject.forEach((user) =>{
+      //var link = document.createElement("a");
+      var link = `<a class = "card-link-feed" href ="profile/${user.name}"> ${user.name} </a> <br><br>`;
+      $("#mo_body").append(link);   
+    })
+    var myModal = new bootstrap.Modal(document.getElementById(`Like`, {}));
+  });
 /
 /%table
 /  %thead
@@ -53,3 +68,5 @@
 /  = 'Log out'
 /  - flash.alert= "Bye Bye"
 /  - method: => "get"
+
+/hw -> write script to show proper modal

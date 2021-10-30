@@ -5,7 +5,7 @@
       console.log("Hello");
       console.log(profileUser.value);
       window.location.href = "/profile/"+profileUser.value;
-      /window.location.history.push("/profile/f");
+      //window.location.history.push("/profile/f");
       }
   .container-fluid
     %a.navbar-brand{:href => "/feed"}
@@ -17,7 +17,7 @@
       %ul.navbar-nav.me-auto.mb-2.mb-lg-0
         %form.d-flex.me-2 
           %input.form-control.w-75.me-2#searchText{"aria-label" => "Search", :placeholder => "Search for user", :type => "search"}/
-          %button.btn.btn-outline-success{:onclick => "searchUser()",:type => "submit"} Search
+          %button.btn.btn-outline-success{:onclick => "searchUser()",:type => "button"} Search
       .d-flex.justify-content-end
         %a.btn.btn-info.me-2{:href => "/new_post"}  Post
         %a.btn.btn-outline-secondary{:href => main_path}  Logout
