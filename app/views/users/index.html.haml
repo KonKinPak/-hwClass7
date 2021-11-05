@@ -1,12 +1,12 @@
 %h1 Listing users
 
-%table
+%table#myTable.table-striped.display{:style => "width:100%"}
   %thead
     %tr
       %th user_id
       %th Email
       %th Name
-      %th Password digest
+      %th 
       %th
       %th
 
@@ -16,7 +16,6 @@
         %td= user.id
         %td= user.email
         %td= user.name
-        %td= user.password_digest
         %td= link_to 'Show', user
         %td= link_to 'Edit', edit_user_path(user) 
         %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
